@@ -1,4 +1,4 @@
-# Argo Humanizer setup: Claude that writes like you
+# Setup
 
 Version 1, 2026-11-11. About 30 minutes, once. After that it runs on its own and learns from you every Friday.
 
