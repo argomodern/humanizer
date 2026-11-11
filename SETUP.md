@@ -1,8 +1,8 @@
-# Taabish setup: Maria's humanizer, with your own voice
+# Argo Humanizer setup: Claude that writes like you
 
 Version 1, 2026-11-11. About 30 minutes, once. After that it runs on its own and learns from you every Friday.
 
-What you get: the same humanizer Maria uses every day. It rewrites anything Claude drafts for you so it sounds like you and not like AI, and every week it learns from what you actually sent. Your rules live in your own file. Maria's rules are not in it.
+What you get: the humanizer from Argo Operator. It rewrites anything Claude drafts for you so it sounds like you and not like AI, and every week it learns from what you actually sent. Your rules live in your own file, on your own computer.
 
 What you need: the Claude desktop app with Claude Code, on a Pro or Max plan.
 
@@ -71,4 +71,4 @@ It runs when your laptop is open. If you miss a Friday, just type "run my weekly
 
 ---
 
-Coming later: the rest of Maria's system (morning to-do sweep, meeting follow-ups, "where did we leave off"), once the version without Todoist is ready.
+Want more? The full Argo Operator package adds a morning to-do sweep, meeting follow-ups and "where did we leave off" before every call. See argomodern.com.

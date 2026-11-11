@@ -1,6 +1,6 @@
-# humanizer (Maria Traver edition)
+# Argo Humanizer
 
-Maria's copy of the humanizer skill, with her own voice rules added. Based on github.com/blader/humanizer (MIT).
+A Claude skill that rewrites anything Claude drafts for you so it sounds like you, and learns your voice every week. Part of Argo Operator by Argo Modern (argomodern.com). Built on github.com/blader/humanizer (MIT).
 
 Setup, start to finish: see SETUP.md
 
