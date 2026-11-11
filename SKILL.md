@@ -5,11 +5,11 @@ description: |
   Use when editing or reviewing prose for AI tells: not-X-but-Y contrasts, one-line
   closers, staged openers, forced triads, dashes everywhere, inflated claims, sales
   language, stock AI words, bold labels, or filler. Based on Wikipedia's "Signs of AI writing."
-  For anything Maria will send or publish, reads her voice guide (~/dev/traver-ops/VOICE-GUIDE.md)
-  first and proposes new voice patterns for her yes; it never edits the guide itself.
+  On first use it reads the user's sent emails and writes their voice guide (~/.claude/my-voice.md),
+  then learns from their edits each week, only with their yes.
 license: MIT
 metadata:
-  version: "3.1.0-argo.1"
+  version: "3.1.0-argo.2"
 ---
 
 # Humanizer: remove AI writing patterns
@@ -46,19 +46,25 @@ If the user gives a writing sample, read it first and match its sentence length,
 
 Without a sample, take the voice from the kind of text. Blog posts, essays, opinions, and personal writing keep the writer's opinions, uncertainty, mixed feelings, humor, and asides, and you may add a reaction where the writer would. Reference, technical, legal, and factual text stays neutral and plain. Removing tells is half the job; the result must still sound like a person.
 
-### Maria's voice guide (local addition, 2026-11-10)
+### Your voice guide
 
-This section is Argo Modern's only change to the upstream skill. Charter: `charter.yml` next to this file.
+The checklist below removes AI habits. Your voice guide, `~/.claude/my-voice.md`, makes the result sound like you. It starts from your real writing and grows every week, only with your yes.
 
-**Philosophy:** every edit Maria makes to a draft is a rule Claude did not know yet, so her voice guide should grow from her own words, with her yes, week over week. **Time saved:** fewer edits per draft; the Friday edit-learning job measures it (15 of 22 sent unchanged on 2026-11-09).
+**First run (no voice guide yet).** If `~/.claude/my-voice.md` does not exist, set it up before anything else. Do not hand the user a form.
+1. Say: "First time here. I'll read some emails you've sent and write your voice guide. Takes about two minutes."
+2. Using their connected email (Gmail or Outlook), read their 30 most recent sent emails. Skip auto-replies and forwards. If no email is connected, ask them to paste 3 to 5 messages they wrote, and tell them how to connect email (Claude app, Settings, Connectors) for next time.
+3. Write `~/.claude/my-voice.md` with these sections: **Which voice, when** (a table: who they write to, how they open, how they end), **Every voice** (habits that hold everywhere), **Mechanics** (greeting, sign-off, signature exactly as written, dashes, exclamation marks, emoji, contractions, typical length), **Rules learned from my edits** (empty), **Rejected** (empty), **Changelog** (today: "created from 30 sent emails"). Every rule must be backed by their own words; quote one short example per rule.
+4. Show the guide and ask only three quick questions, numbered so they can reply "1 yes 2 no": anything wrong, anything missing, any habit they want to drop.
+5. Ask once: "Want me to run this on everything I draft for you to send?" On yes, add to `~/.claude/CLAUDE.md` (create it if missing): "Anything you draft for me to send or publish (emails, posts, messages) goes through the humanizer skill before you show it to me."
+6. Tell them about the weekly review (below) and offer to set up the Friday scheduled task for them.
 
-1. **Read the guide first.** When the text is something Maria will send or publish (an email, reply, post, DM, newsletter, proposal, client-facing page), read `~/dev/traver-ops/VOICE-GUIDE.md` before marking tells. Pick the register from its table (operator, thread reply, casual note, FYI, sales, LinkedIn post, LinkedIn DM, client roundup) and follow that section.
-2. **Order of authority:** a real sample of her writing, then the voice guide, then the checklist below. Where the guide and the checklist disagree, the guide wins (for example, her sales voice keeps "I hope you're doing well!" and a few exclamation marks). The guide never overrides "add no facts", and her no-em-dash rule always holds.
-3. **Notice new patterns, propose, never apply.** If her own words in this run (her edits to a draft, text she wrote herself, a correction she gave) show a habit the guide does not have, write it as a proposal: the rule in one testable sentence, the register, and her exact words as evidence. At most 3 per run. Only her own writing counts, never a client's reply or a quoted thread.
-   - In a session with her: put the proposal in the "What I need from you" list. On her yes, add the line to the right section of `VOICE-GUIDE.md` and a dated Changelog line; on her no, add it to the guide's "Rejected" list.
-   - Anywhere else (embedded mode, a sweep, a helper agent): append it to `~/dev/traver-ops/voice-guide-proposals.md` with Status "open". The session that applies the Friday edit-learning approvals shows her the open ones.
-4. **Never edit `VOICE-GUIDE.md` without her yes in chat.** No exceptions, including in embedded mode.
-5. Text not written for her to send (code, commit messages, notes to Maria herself) skips steps 1 to 3.
+**Every run.** Read `~/.claude/my-voice.md` before marking tells. Order of authority: a real sample of their writing, then the voice guide, then the checklist. The guide never overrides "add no facts".
+
+**Learning, never applying.** If their own words in this run (their edits to a draft, a correction) show a habit the guide lacks, write it as a proposal: one testable sentence plus their exact words as evidence, at most 3 per run. In a chat with them, list it numbered for a yes or no. Anywhere else, append it to `~/.claude/my-voice-proposals.md`. Never edit `my-voice.md` without their yes. Only their own writing counts, never someone else's reply or a quoted thread.
+
+**Weekly review.** When they say "run my weekly voice review" (or a Friday scheduled task does): read the emails they sent this week and any drafts you wrote for them, compare them, and propose up to 5 new rules, numbered, each with their exact words as evidence, plus anything open in `my-voice-proposals.md`. Change nothing until they answer. Yeses go into "Rules learned from my edits" with a dated Changelog line; noes go to "Rejected" so they are never proposed again.
+
+Text not written for them to send (code, commit messages, notes to themselves) skips this section.
 
 ### What to return
 
